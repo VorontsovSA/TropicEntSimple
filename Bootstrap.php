@@ -14,7 +14,7 @@ class Bootstrap
 {
     public static function main($argv)
     {
-        $dataProvider = new CsvDataProvider($argv[1]);
+        $dataProvider = new CsvDataProvider((string)$argv[1]);
         $parser = new Parser($dataProvider);
         $response = $parser->getResults();
 
