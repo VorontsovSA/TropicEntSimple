@@ -1,5 +1,6 @@
-Welcome to the Tropicent Test Pack.
+[![Build Status](https://travis-ci.com/VorontsovSA/TropicEntSimple.svg?branch=master)](https://travis-ci.com/VorontsovSA/TropicEntSimple)
 
+Welcome to the Tropicent Test Pack.
 
 Your test pack includes:
 * This readme file
