@@ -31,9 +31,9 @@ class Parser
 
     private function isMatch(array $row): bool
     {
-        return preg_match('/^PAY\d{6}[A-Z]{2}$/', $row[1]) === 1
-            && is_numeric($row[8])
-            && preg_match('/^[A-Z]{3}$/', $row[9]) === 1;
+        return preg_match('/^PAY\d{6}[A-Z]{2}$/', $row[1] ?? '') === 1
+            && is_numeric($row[8] ?? '')
+            && preg_match('/^[A-Z]{3}$/', $row[9] ?? '') === 1;
     }
 
     private function addParsedItem(string $currency, float $value): void
