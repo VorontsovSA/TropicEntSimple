@@ -18,13 +18,13 @@ If there is another currencies in a bank statement, it also should be in the out
 
 
 Sample Output:
-
+```
 Totals
 GBP 3,432.21
 USD 14,432.34
 EUR 43,543.23
 CAD 2,321.34
-
+```
 
 Instructions:
 * Complete the skeleton class so that running "php Bootstrap.php statement.csv" on the commandline 
