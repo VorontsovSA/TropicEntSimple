@@ -23,7 +23,11 @@ class PaymentData
 
     public function __toString(): string
     {
-        $result = '';
+        if (!count($this->items)) {
+            return 'No data found' . PHP_EOL;
+        }
+
+        $result = 'Totals' . PHP_EOL;
         foreach ($this->items as $item) {
             $result .= $item . PHP_EOL;
         }
