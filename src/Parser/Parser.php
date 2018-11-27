@@ -18,6 +18,8 @@ class Parser
               $parsedData->addItem(new PaymentDataItem($row[9], (float)$row[8]));
             }
         }
+
+        return $parsedData;
     }
 
     private function isMatch(array $row): bool
