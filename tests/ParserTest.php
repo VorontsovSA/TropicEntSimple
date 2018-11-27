@@ -23,9 +23,9 @@ class ParserTest extends TestCase
             . 'CAD 2,321.34' . PHP_EOL
             . 'USD 1,000.00' . PHP_EOL;
 
+        $parser = new Parser();
         $dataProvider = new CsvDataProvider(__DIR__ . '/fixtures/test1.csv');
-        $parser = new Parser($dataProvider);
-        $response = $parser->getResults();
+        $response = $parser->parse($dataProvider);
 
         self::assertEquals($expectedResponse, $response);
     }
@@ -41,9 +41,9 @@ class ParserTest extends TestCase
             . 'RUR 4,352,342,343.00' . PHP_EOL
             . 'BTC 12.23' . PHP_EOL;
 
+        $parser = new Parser();
         $dataProvider = new CsvDataProvider(__DIR__ . '/fixtures/test2.csv');
-        $parser = new Parser($dataProvider);
-        $response = $parser->getResults();
+        $response = $parser->parse($dataProvider);
 
         self::assertEquals($expectedResponse, $response);
     }
