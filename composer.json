@@ -12,9 +12,13 @@
     }
   },
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.1",
+    "ext-mbstring": "*"
   },
   "require-dev": {
+    "friendsofphp/php-cs-fixer": "~2.5",
+    "jakub-onderka/php-parallel-lint": "^1.0",
+    "phpstan/phpstan": "^0.10.3",
     "phpunit/phpunit": "^7.2"
   }
 }

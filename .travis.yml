@@ -6,6 +6,9 @@ before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source --dev
 script:
+  - vendor/bin/php-cs-fixer fix --diff -vvv --dry-run --allow-risky=yes
+  - vendor/bin/parallel-lint --exclude vendor .
+  - vendor/bin/phpstan analyse -l1 -cphpstan.neon src/
   - vendor/bin/phpunit --bootstrap=vendor/autoload.php tests
 matrix:
   fast_finish: true
