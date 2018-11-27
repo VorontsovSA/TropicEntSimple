@@ -15,7 +15,7 @@ class Parser
         $parsedData = new PaymentData();
         while ($row = $dataProvider->getNextRow()) {
             if ($this->isMatch($row)) {
-              $parsedData->addItem(new PaymentDataItem($row[9], (float)$row[8]));
+                $parsedData->addItem(new PaymentDataItem($row[9], (float)$row[8]));
             }
         }
 

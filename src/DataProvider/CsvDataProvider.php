@@ -15,9 +15,9 @@ class CsvDataProvider implements DataProviderInterface
 
     private function getRowsGenerator(string $fileName): \Generator
     {
-        if (($handle = fopen($fileName, "r")) !== false) {
+        if (($handle = fopen($fileName, 'rb')) !== false) {
             try {
-                while (($row = fgetcsv($handle, 0, ",")) !== false) {
+                while (($row = fgetcsv($handle, 0, ',')) !== false) {
                     yield $row;
                 }
             } finally {
@@ -30,6 +30,7 @@ class CsvDataProvider implements DataProviderInterface
     {
         $current = $this->rowsGenerator->current() ?? null;
         $this->rowsGenerator->next();
+
         return $current;
     }
 }
