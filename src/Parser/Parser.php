@@ -10,21 +10,12 @@ use RegistryParser\PaymentData\PaymentDataItem;
 
 class Parser
 {
-    private $dataProvider;
-    private $parsedData;
-
-    public function __construct(DataProviderInterface $dataProvider)
+    public function parse(DataProviderInterface $dataProvider): PaymentData
     {
-        $this->dataProvider = $dataProvider;
-        $this->parsedData = new PaymentData();
-        $this->parse();
-    }
-
-    private function parse(): void
-    {
-        while ($row = $this->dataProvider->getNextRow()) {
+        $parsedData = new PaymentData();
+        while ($row = $dataProvider->getNextRow()) {
             if ($this->isMatch($row)) {
-                $this->addParsedItem($row[9], (float)$row[8]);
+              $parsedData->addItem(new PaymentDataItem($row[9], (float)$row[8]));
             }
         }
     }
@@ -34,15 +25,5 @@ class Parser
         return preg_match('/^PAY\d{6}[A-Z]{2}$/', $row[1] ?? '') === 1
             && is_numeric($row[8] ?? '')
             && preg_match('/^[A-Z]{3}$/', $row[9] ?? '') === 1;
-    }
-
-    private function addParsedItem(string $currency, float $value): void
-    {
-        $this->parsedData->addItem(new PaymentDataItem($currency, $value));
-    }
-
-    public function getResults(): PaymentData
-    {
-        return $this->parsedData;
     }
 }
